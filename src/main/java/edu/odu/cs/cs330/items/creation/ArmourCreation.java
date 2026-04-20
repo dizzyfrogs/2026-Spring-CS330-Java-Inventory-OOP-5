@@ -21,15 +21,13 @@ public class ArmourCreation implements ItemCreationStrategy
     @Override
     public Item fromDefaults()
     {
-        // Maybe call a Default Constructor...
-        return null;
+        return new Armour();
     }
 
     @Override
     public int requiredNumberOfValues()
     {
-        // What is the correct return value?
-        return -1;
+        return 7;
     }
 
     @SuppressWarnings({
@@ -39,8 +37,15 @@ public class ArmourCreation implements ItemCreationStrategy
     @Override
     public Item fromTokens(final String... tokens)
     {
-        // Maybe call a Constructor that accepts multiple arguments...
-        return new Armour();
+        return new Armour(
+            tokens[0],
+            Integer.parseInt(tokens[2]),
+            Integer.parseInt(tokens[3]),
+            tokens[1],
+            tokens[4],
+            Integer.parseInt(tokens[5]),
+            tokens[6]
+        );
     }
 
     @SuppressWarnings({
@@ -57,7 +62,14 @@ public class ArmourCreation implements ItemCreationStrategy
 
         Armour theOriginal = (Armour) original;
 
-        // Maybe call a Constructor that accepts multiple arguments...
-        return new Armour();
+        return new Armour(
+            theOriginal.getName(),
+            theOriginal.getDurability(),
+            theOriginal.getDefense(),
+            theOriginal.getMaterial(),
+            theOriginal.getModifier(),
+            theOriginal.getModifierLevel(),
+            theOriginal.getElement()
+        );
     }
 }
